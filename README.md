@@ -58,6 +58,8 @@ MYSQL Version: 8.0.23
 ## Steps
 
 1. Install NodeJS and MYSQL Server
+2. Set enviroment variables configuration
+    - `./.env`
 2. Install dependencies
     - `npm install`
 3. Create Database 
