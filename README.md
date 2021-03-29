@@ -50,9 +50,9 @@ SOLID Singleton architecture with 3 layers / MCM / Monolitic
  ┗ 📜tsconfig.json <br />
 
 ## Requirements
-NodeJS Version: 14.15.4
-NPM Version: 6.14.10
-MYSQL Version: 8.0.23
+NodeJS Version: 14.15.4 <br />
+NPM Version: 6.14.10 <br />
+MYSQL Version: 8.0.23 <br />
 
 
 ## Steps
