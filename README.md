@@ -1,7 +1,7 @@
 ## API-POSTS
 
 ### Architecture
-SOLID Singleton architecture with 3 layers / MCM
+SOLID Singleton architecture with 3 layers / MCM / Monolitic
 
 ### Structure files
 📦api-posts <br />
