@@ -3,7 +3,7 @@
 ### Architecture
 SOLID Singleton architecture with 3 layers
 
-### Patron Design
+### Patron design
 MCM
 
 ### Structure files
@@ -51,3 +51,30 @@ MCM
  ┣ 📜package-lock.json <br />
  ┣ 📜package.json <br />
  ┗ 📜tsconfig.json <br />
+
+## Requirements
+NodeJS Version: 14.15.4
+NPM Version: 6.14.10
+MYSQL Version: 8.0.23
+
+
+## Steps
+
+1. Install NodeJS and MYSQL Server
+2. Install dependencies
+    - `npm install`
+3. Create Database 
+    - Run `CREATE DATABASE IF NOT EXISTS posts;` Script into MYSQL Server
+4. Run project
+    - `npm run dev` (This command automatically creates the necessary tables into database)
+5. Run seed file Script into MYSQL Server
+    - `./seed.sql` (This script inserts default data)
+6. You can do requests to API (check above user admin credentials)
+
+## Admin Credentials
+username: admin
+password: admin123
+## Notes:
+- This is a base structure project and continue in development.
+- This effort took about 12 Hours.
+- Unit Tests are going to implement with JEST.
