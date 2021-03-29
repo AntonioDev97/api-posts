@@ -1,0 +1,5 @@
+#ignore files
+node_modules/
+dist/
+logs/
+package-lock.json
