@@ -1,10 +1,7 @@
 ## API-POSTS
 
 ### Architecture
-SOLID Singleton architecture with 3 layers
-
-### Patron design
-MCM
+SOLID Singleton architecture with 3 layers / MCM
 
 ### Structure files
 📦api-posts <br />
@@ -70,9 +67,10 @@ MYSQL Version: 8.0.23
 5. Run seed file Script into MYSQL Server
     - `./seed.sql` (This script inserts default data)
 6. You can do requests to API (check above user admin credentials)
+    - First do login -> /login (credentiales are above).
 
 ## Admin Credentials
-username: admin
+username: admin <br />
 password: admin123
 ## Notes:
 - This is a base structure project and continue in development.
