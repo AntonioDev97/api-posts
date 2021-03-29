@@ -68,8 +68,9 @@ MYSQL Version: 8.0.23
     - `npm run dev` (This command automatically CREATES the necessary TABLES into DATABASE)
 5. Run seed file Script into MYSQL Server
     - `./seed.sql` (This script inserts default data)
-6. You can do requests to API (check above user admin credentials)
-    - First do login -> /login (credentiales are above).
+6. You can do requests to API (check down user admin credentials)
+    - You can find the postman collection at `./API_POSTS.postman_collection.json`
+    - First do login -> /login (credentiales are down).
 
 ## Admin Credentials
 username: admin <br />
