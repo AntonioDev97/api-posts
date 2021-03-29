@@ -65,7 +65,7 @@ MYSQL Version: 8.0.23
 3. Create Database 
     - Run `CREATE DATABASE IF NOT EXISTS posts;` Script into MYSQL Server
 4. Run project
-    - `npm run dev` (This command automatically creates the necessary tables into database)
+    - `npm run dev` (This command automatically CREATES the necessary TABLES into DATABASE)
 5. Run seed file Script into MYSQL Server
     - `./seed.sql` (This script inserts default data)
 6. You can do requests to API (check above user admin credentials)

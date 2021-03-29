@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "8f73f84e-e38d-45dd-a292-df7ec4b9afa9",
+		"name": "API_POSTS",
+		"description": "request collections to manage posts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Post Create",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Pa$$Key%",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "ApiKey",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/posts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"posts"
+							]
+						},
+						"description": "new request to store new post"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder contains requests to manage posts entity"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "User Create",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Pa$$Key%",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "ApiKey",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJ1c2VyIHRlc3QgYWRtaW4iLCJsYXN0X25hbWUiOiJsYXN0bmFtZSB0ZXN0IiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjE3MDMzNjA4LCJleGQiOjE2MTcwNDA4MDgsImV4cCI6MTYxNzA0MDgwOH0.npsqjXMogAh_vV97XDcMH11VxYpV20bI0tT0RUTjFLo\"",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"user test admin\",\n    \"last_name\": \"lastname test\",\n    \"email\": \"admin@gmail.com\",\n    \"username\": \"admin\",\n    \"password\": \"admin123\",\n    \"permissions\": [{\n            \"module\": \"users\",\n            \"permission\": \"create\",\n            \"description\": \"user can create new users\",\n        },{\n            \"module\": \"users\",\n            \"permission\": \"view\",\n            \"description\": \"user can view users\"\n        },{\n            \"module\": \"users\",\n            \"permission\": \"edit\",\n            \"description\": \"user can edit users\"\n        },{\n            \"module\": \"users\",\n            \"permission\": \"delete\",\n            \"description\": \"user can delete users\"\n        }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"users"
+							]
+						},
+						"description": "request to create new user"
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Pa$$Key%",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "ApiKey",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"login"
+							]
+						},
+						"description": "request to login user"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder contains user requests"
+		}
+	]
+}
