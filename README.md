@@ -73,18 +73,18 @@ MYSQL Version: 8.0.23 <br />
     - First do login -> /login (credentiales are down).
 
 ## Build and run in JavaScript
-    - Transform TypeScript to JavaScript with: `npm run build` this will create a folder `./dist` with project in JavaScript
-    - Run project in JavaScript with `npm start`
+- Transform TypeScript to JavaScript with: `npm run build` this will create a folder `./dist` with project in JavaScript<br />
+- Run project in JavaScript with `npm start`<br />
 ## Unit Test
-Run unit test:
-    - start test: `npm run test`
-    - generate coverage report: `npm run test-report`
-You can find the coverage report at `./coverage` once generated
+Run unit test: <br />
+    - start test: `npm run test`<br />
+    - generate coverage report: `npm run test-report`<br />
+You can find the coverage report at `./coverage` once generated<br />
 
 ## Admin Credentials
 username: admin <br />
 password: admin123
 ## Notes:
-- This is a base structure project and continue in development.
-- This effort took about 22 Hours.
-- Unit Tests are in progress but someones are ready!.
+- This is a base structure project and continue in development.<br />
+- This effort took about 22 Hours.<br />
+- Unit Tests are in progress but someones are ready!.<br />
