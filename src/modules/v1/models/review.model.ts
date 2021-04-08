@@ -1,21 +1,17 @@
 import { DataTypes, Sequelize } from 'sequelize';
 
-const PostModel = (sequelize: Sequelize) => sequelize.define('posts', {
+const ReviewModel = (sequelize: Sequelize) => sequelize.define('reviews', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
     },
-    title: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-    },
-    author_id: {
+    post_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    content: {
+    review: {
         type: DataTypes.TEXT,
         allowNull: false,
     },
@@ -39,13 +35,11 @@ const PostModel = (sequelize: Sequelize) => sequelize.define('posts', {
     }
 });
 
-export interface IPostModel {
+export interface IReviewModel {
     id?: number,
-    title: string,
-    content: string,
-    author_id: number,
+    review: string,
     created_by: number,
     updated_by: number,
 };
 
-export default PostModel;
+export default ReviewModel;

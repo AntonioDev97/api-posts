@@ -12,10 +12,17 @@ class UserRoute {
     }
 
     private setUserRoutes(): void {
-
+        // Login to authenticate an user.
         this.route.post('/login', (req: Request, res: Response) => this.UserCtrl.login(req,res));
 
+        // Save new user with their permissions.
         this.route.post('/users', [EnsureAuth, AllowPath], (req: Request, res: Response) => this.UserCtrl.storeUser(req, res));
+
+        // Retrieve list of users.
+        this.route.get('/users', [EnsureAuth, AllowPath], (req: Request, res: Response) => this.UserCtrl.getUsers(req, res));
+
+        // Retrieve details of an user.
+        this.route.get('/users/:id', [EnsureAuth, AllowPath], (req: Request, res: Response) => this.UserCtrl.getUserById(req, res));
     }
 }
 

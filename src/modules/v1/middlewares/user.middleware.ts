@@ -18,7 +18,8 @@ export const AllowPath = (request: IRequestAuth, response: Response, next: NextF
         if(Array.isArray(Module) && Module.length) {
             const isAllow = (right: string) => Module.find((mod) => mod.permission === right);
             const Sources: any = {
-                'POSTUSERS': isAllow('create')
+                'POSTUSERS': isAllow('create'),
+                'GETUSERS': isAllow('view'),
             };
             allow = RouteAccess in Sources && Sources[RouteAccess] ? true : false;
         }

@@ -1,12 +1,13 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { hdlResponse } from "../../../services/response-handler.service";
-import { Op, Transaction } from 'sequelize';
+import { Op, FindOptions, Transaction } from 'sequelize';
 import { ValidateSchema, IValidateResponse } from '../../../services/validator.service';
 import { Logger } from '../../../services/winston.service';
 import { UserSchema, LoginSchema, IUserInput } from '../validators/user.validator';
 import { Models, DbConfig } from '../../../services/sequelize.service';
 import { TokenService } from '../../../services/jwt.service';
+import { JSONSchema7 } from 'json-schema';
 
 export class UserController {
     public async login(request: Request, response: Response) {
@@ -15,7 +16,7 @@ export class UserController {
             // 1. Validate input parameters
             const Params: IUserInput = request.body;
             const Validation: IValidateResponse = ValidateSchema(Params, LoginSchema);
-            if (!Validation.success){
+            if (!Validation.success) {
                 Logger.info(`End process - login - authenticate user - ${JSON.stringify(Validation)}`);
                 return hdlResponse.setResponse(response, 400, 'Validation error', Validation.errors);
             }
@@ -73,6 +74,63 @@ export class UserController {
             Logger.error('Error - storeUser', error);
             Logger.info('End process - Error storeUser');
             return hdlResponse.setResponse(response, 500, 'Error user not stored, please try again!', error);
+        }
+    }
+
+    public async getUsers(request: Request, response: Response) {
+        try {
+            Logger.info('Start process - getUsers - get list of users');
+            // 1. Get user's list
+            const QueryOpt: FindOptions = {
+                attributes: { exclude: ['password', 'token'] }
+            };
+            const Users = await Models.User.findAll(QueryOpt);
+            if (Array.isArray(Users) && Users.length){
+                Logger.info(`End process - getUsers - get list of users - ${JSON.stringify(Users)}`);
+                return hdlResponse.setResponse(response, 200, 'List of users!', Users);
+            } else {
+                Logger.info(`End process - getUsers - get list of users - ${JSON.stringify(Users)}`);
+                return hdlResponse.setResponse(response, 404, 'Users not found!');
+            }
+        } catch (error) {
+            Logger.error('Error - getUsers', error);
+            Logger.info('End process - Error getUsers');
+            return hdlResponse.setResponse(response, 500, 'Error users not retrieved, please try again!', error);
+        }
+    }
+
+    public async getUserById(request: Request, response: Response) {
+        try {
+            Logger.info('Start process - getUserById - get user details');
+            // 1. Validate input parameters.
+            const UserId: number = Number(request.params.id);
+            const Schema: JSONSchema7 = { ...UserSchema, required: ['id'] };
+            const validation: IValidateResponse = ValidateSchema({ id: UserId }, UserSchema);
+            if (!validation.success) {
+                Logger.info(`End process - getUserById - get details of user - ${JSON.stringify(validation)}`);
+                return hdlResponse.setResponse(response, 400, 'Validation error', validation.errors);
+            }
+            // 2. Get details of user.
+            const QueryOpt: FindOptions = {
+                attributes: { exclude: ['password', 'token'] },
+                where: { id: UserId },
+                include: [{
+                    model: Models.Permission,
+                    required: false,
+                }]
+            };
+            const User = await Models.User.findOne(QueryOpt);
+            if (User){
+                Logger.info(`End process - getUserById - get user details - ${JSON.stringify(User)}`);
+                return hdlResponse.setResponse(response, 200, 'User details!', User);
+            } else {
+                Logger.info(`End process - getUserById - get user details - ${JSON.stringify(User)}`);
+                return hdlResponse.setResponse(response, 404, 'User not found!');
+            }
+        } catch (error) {
+            Logger.error('Error - getUserById', error);
+            Logger.info('End process - Error getUserById');
+            return hdlResponse.setResponse(response, 500, 'Error user details not retrieved, please try again!', error);
         }
     }
 

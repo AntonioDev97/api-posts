@@ -28,7 +28,6 @@ SOLID Singleton architecture with 3 layers / MCM / Monolitic
  ┃ ┃ ┃ ┃ ┗ 📜user.route.ts <br />
  ┃ ┃ ┃ ┣ 📂test <br />
  ┃ ┃ ┃ ┃ ┣ 📜post.test.ts <br />
- ┃ ┃ ┃ ┃ ┗ 📜user.tetst.ts <br />
  ┃ ┃ ┃ ┗ 📂validators <br />
  ┃ ┃ ┃ ┃ ┗ 📜user.validator.ts <br />
  ┃ ┣ 📂services <br />
@@ -50,9 +49,9 @@ SOLID Singleton architecture with 3 layers / MCM / Monolitic
  ┗ 📜tsconfig.json <br />
 
 ## Requirements
-NodeJS Version: 14.15.4
-NPM Version: 6.14.10
-MYSQL Version: 8.0.23
+NodeJS Version: 14.15.4 <br />
+NPM Version: 6.14.10 <br />
+MYSQL Version: 8.0.23 <br />
 
 
 ## Steps
@@ -65,17 +64,27 @@ MYSQL Version: 8.0.23
 3. Create Database 
     - Run `CREATE DATABASE IF NOT EXISTS posts;` Script into MYSQL Server
 4. Run project
-    - `npm run dev` (This command automatically CREATES the necessary TABLES into DATABASE)
+    - `npm run dev` (This command automatically CREATES the necessary TABLES into DATABASE) this mode is developer mode if you need to run in production mode please check section "Build and run in JavaScript"
 5. Run seed file Script into MYSQL Server
     - `./seed.sql` (This script inserts default data)
 6. You can do requests to API (check down user admin credentials)
     - You can find the postman collection at `./API_POSTS.postman_collection.json`
+    - You can import the postman enviroment at `./POSTS-LOCAL.postman_environment.json`
     - First do login -> /login (credentiales are down).
+
+## Build and run in JavaScript
+    - Transform TypeScript to JavaScript with: `npm run build` this will create a folder `./dist` with project in JavaScript
+    - Run project in JavaScript with `npm start`
+## Unit Test
+Run unit test:
+    - start test: `npm run test`
+    - generate coverage report: `npm run test-report`
+You can find the coverage report at `./coverage` once generated
 
 ## Admin Credentials
 username: admin <br />
 password: admin123
 ## Notes:
 - This is a base structure project and continue in development.
-- This effort took about 12 Hours.
-- Unit Tests are going to implement with JEST.
+- This effort took about 22 Hours.
+- Unit Tests are in progress but someones are ready!.

@@ -5,6 +5,10 @@ export const UserSchema: JSONSchema7 = {
     type: 'object',
     additionalProperties: false,
     properties: {
+        id: {
+            type: 'integer',
+            minimum: 1,
+        },
         name: {
             type: 'string',
             minLength: 1,
@@ -44,15 +48,15 @@ export const UserSchema: JSONSchema7 = {
                     },
                     permission: {
                         type: 'string',
-                        enum: ['create', 'edit', 'view', 'delete']
+                        enum: ['create', 'edit', 'view', 'delete', 'review']
                     },
                     description: {
                         type: ['string', 'null'],
                         minLength: 1,
                     }
-                }
-            },
-            required: ['module', 'permission', 'description']
+                },
+                required: ['module', 'permission', 'description']
+            }
         }
     },
     required: ['name', 'last_name', 'username', 'password', 'permissions']

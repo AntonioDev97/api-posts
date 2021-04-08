@@ -33,7 +33,22 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Second Post\",\n    \"content\": \"This is a test content\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{baseUrl}}/{{version}}/posts",
 							"host": [
@@ -47,15 +62,214 @@
 						"description": "new request to store new post"
 					},
 					"response": []
-				}
-			],
-			"description": "Folder contains requests to manage posts entity"
-		},
-		{
-			"name": "Users",
-			"item": [
+				},
 				{
-					"name": "User Create",
+					"name": "Post Update",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Pa$$Key%",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "ApiKey",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"title\": \"First Post updated\",\n    \"content\": \"This is a test content\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/posts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"posts"
+							]
+						},
+						"description": "request to update a post"
+					},
+					"response": []
+				},
+				{
+					"name": "Posts List",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Pa$$Key%",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "ApiKey",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/posts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"posts"
+							]
+						},
+						"description": "request to retrieve a collection of posts"
+					},
+					"response": []
+				},
+				{
+					"name": "Post Details",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Pa$$Key%",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "ApiKey",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/posts/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "post id"
+								}
+							]
+						},
+						"description": "request to get post with their reviews and all data"
+					},
+					"response": []
+				},
+				{
+					"name": "Post Delete",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Pa$$Key%",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "ApiKey",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/posts/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "post id"
+								}
+							]
+						},
+						"description": "request to delete post and their reviews"
+					},
+					"response": []
+				},
+				{
+					"name": "Review Create",
 					"request": {
 						"auth": {
 							"type": "apikey",
@@ -81,13 +295,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJ1c2VyIHRlc3QgYWRtaW4iLCJsYXN0X25hbWUiOiJsYXN0bmFtZSB0ZXN0IiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjE3MDMzNjA4LCJleGQiOjE2MTcwNDA4MDgsImV4cCI6MTYxNzA0MDgwOH0.npsqjXMogAh_vV97XDcMH11VxYpV20bI0tT0RUTjFLo\"",
+								"value": "{{token}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"user test admin\",\n    \"last_name\": \"lastname test\",\n    \"email\": \"admin@gmail.com\",\n    \"username\": \"admin\",\n    \"password\": \"admin123\",\n    \"permissions\": [{\n            \"module\": \"users\",\n            \"permission\": \"create\",\n            \"description\": \"user can create new users\",\n        },{\n            \"module\": \"users\",\n            \"permission\": \"view\",\n            \"description\": \"user can view users\"\n        },{\n            \"module\": \"users\",\n            \"permission\": \"edit\",\n            \"description\": \"user can edit users\"\n        },{\n            \"module\": \"users\",\n            \"permission\": \"delete\",\n            \"description\": \"user can delete users\"\n        }]\n}",
+							"raw": "{\n    \"post_id\": 3,\n    \"review\": \"This is my first review\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -95,19 +309,26 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/{{version}}/users",
+							"raw": "{{baseUrl}}/{{version}}/posts/reviews",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"{{version}}",
-								"users"
+								"posts",
+								"reviews"
 							]
 						},
-						"description": "request to create new user"
+						"description": "request to create a new review of a post"
 					},
 					"response": []
-				},
+				}
+			],
+			"description": "Folder contains requests to manage posts entity"
+		},
+		{
+			"name": "Users",
+			"item": [
 				{
 					"name": "User Login",
 					"request": {
@@ -153,6 +374,158 @@
 							]
 						},
 						"description": "request to login user"
+					},
+					"response": []
+				},
+				{
+					"name": "User Create",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Pa$$Key%",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "ApiKey",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJ1c2VyIHRlc3QgYWRtaW4iLCJsYXN0X25hbWUiOiJsYXN0bmFtZSB0ZXN0IiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjE3NzU4NTcwLCJleGQiOjE2MTc3NjU3NzAsImV4cCI6MTYxNzc2NTc3MH0.iQ-b_vujvIDjPYfIk4S9qBRWql0KuozvDQWBXuLTIL8\"",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"user test admin\",\n    \"last_name\": \"lastname test\",\n    \"email\": \"admin@gmail.com\",\n    \"username\": \"admin\",\n    \"password\": \"admin123\",\n    \"permissions\": [{\n            \"module\": \"users\",\n            \"permission\": \"create\",\n            \"description\": \"user can create new users\"\n        },{\n            \"module\": \"users\",\n            \"permission\": \"view\",\n            \"description\": \"user can view users\"\n        },{\n            \"module\": \"users\",\n            \"permission\": \"edit\",\n            \"description\": \"user can edit users\"\n        },{\n            \"module\": \"users\",\n            \"permission\": \"delete\",\n            \"description\": \"user can delete users\"\n        },{\n            \"module\": \"posts\",\n            \"permission\": \"create\",\n            \"description\": \"user can create posts\"\n        },{\n            \"module\": \"posts\",\n            \"permission\": \"edit\",\n            \"description\": \"user can edit posts\"\n        },{\n            \"module\": \"posts\",\n            \"permission\": \"view\",\n            \"description\": \"user can view posts\"\n        },{\n            \"module\": \"posts\",\n            \"permission\": \"delete\",\n            \"description\": \"user can delete posts\"\n        },{\n            \"module\": \"posts\",\n            \"permission\": \"review\",\n            \"description\": \"user can review posts\"\n        }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"users"
+							]
+						},
+						"description": "request to create new user"
+					},
+					"response": []
+				},
+				{
+					"name": "User List",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Pa$$Key%",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "ApiKey",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJ1c2VyIHRlc3QgYWRtaW4iLCJsYXN0X25hbWUiOiJsYXN0bmFtZSB0ZXN0IiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjE3NzU4NTcwLCJleGQiOjE2MTc3NjU3NzAsImV4cCI6MTYxNzc2NTc3MH0.iQ-b_vujvIDjPYfIk4S9qBRWql0KuozvDQWBXuLTIL8\"",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"users"
+							]
+						},
+						"description": "request to get list of users"
+					},
+					"response": []
+				},
+				{
+					"name": "User Details",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Pa$$Key%",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "ApiKey",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJ1c2VyIHRlc3QgYWRtaW4iLCJsYXN0X25hbWUiOiJsYXN0bmFtZSB0ZXN0IiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjE3NzY1MjE5LCJleGQiOjE2MTc3NzI0MTksImV4cCI6MTYxNzc3MjQxOX0.F3JD-3Xg75a9JVlCEVAZkrmHtH2li8YcSenkY7aippA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/users/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "user id"
+								}
+							]
+						},
+						"description": "request to get user details"
 					},
 					"response": []
 				}
