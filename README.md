@@ -71,6 +71,9 @@ MYSQL Version: 8.0.23 <br />
     - You can find the postman collection at `./API_POSTS.postman_collection.json`
     - You can import the postman enviroment at `./POSTS-LOCAL.postman_environment.json`
     - First do login -> /login (credentiales are down).
+## Admin Credentials
+username: admin <br />
+password: admin123
 
 ## Build and run in JavaScript
 - Transform TypeScript to JavaScript with: `npm run build` this will create a folder `./dist` with project in JavaScript<br />
@@ -81,9 +84,6 @@ Run unit test: <br />
     - generate coverage report: `npm run test-report`<br />
 You can find the coverage report at `./coverage` once generated<br />
 
-## Admin Credentials
-username: admin <br />
-password: admin123
 ## Notes:
 - This is a base structure project and continue in development.<br />
 - This effort took about 22 Hours.<br />
